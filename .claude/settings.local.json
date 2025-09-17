@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Read(/private/tmp/**)",
+      "Read(/private/tmp/playwright-mcp/**)",
+      "Read(/tmp/playwright-mcp/**)",
+      "Bash(claude mcp add:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:lusaxweb.github.io)",
+      "WebSearch",
+      "Bash(npm uninstall:*)",
+      "WebFetch(domain:ui.nuxt.com)",
+      "Bash(npx tailwindcss:*)",
+      "WebFetch(domain:www.shelve.cloud)",
+      "Bash(lsof:*)",
+      "Read(/Users/lionhumbp2024/Desktop/**)",
+      "Read(/Users/lionhumbp2024/Desktop/**)",
+      "Read(/Users/lionhumbp2024/Desktop/**)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npx vue-tsc:*)",
+      "WebFetch(domain:icon-sets.iconify.design)",
+      "WebFetch(domain:gravity-ui.com)",
+      "WebFetch(domain:icones.js.org)",
+      "WebFetch(domain:api.iconify.design)",
+      "Bash(npm run build:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
