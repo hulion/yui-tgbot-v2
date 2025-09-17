@@ -2,6 +2,28 @@
 
 一個基於 Cloudflare Workers 的企業級 Telegram Bot，具備完整的用戶管理、群組管理和智能遲到回報系統。
 
+## 🆕 最新更新 (2025-09-17)
+
+### ✨ 新增功能
+- **統計分析模組**: 支援每日、週報、月報統計查詢
+- **智能快取系統**: 自動快取統計資料，提升查詢效能
+- **完整 API 端點**: RESTful API 支援前端管理面板
+- **前端介面優化**: 修復導航問題，改善用戶體驗
+
+### 📊 統計 API
+```bash
+GET /api/stats/late-reports/daily    # 每日統計
+GET /api/stats/late-reports/weekly   # 週報統計  
+GET /api/stats/late-reports/monthly  # 月報統計
+GET /api/stats/late-reports/user/:id # 個人統計
+POST /api/stats/clear-cache          # 清除快取
+```
+
+### 🗄️ 資料庫更新
+- 新增 `stats_cache` 表格支援統計快取
+- 優化索引提升查詢效能
+- 支援自動過期清理機制
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)](https://vuejs.org/)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)](https://workers.cloudflare.com/)
