@@ -51,6 +51,10 @@ POST /api/stats/clear-cache          # 清除快取
 git clone https://github.com/hulion/yui-tgbot-v2.git
 cd yui-tgbot-v2
 
+# 設定環境變數
+cp .dev.vars.example .dev.vars
+# 編輯 .dev.vars 填入你的 Bot Token
+
 # 安裝依賴
 npm install
 
@@ -63,11 +67,14 @@ npm install
 npm run dev
 ```
 
+⚠️ **重要**：請先閱讀 [安全指南](docs/SECURITY.md) 了解如何安全地管理敏感資訊。
+
 ## 📖 文件
 
 - [📋 完整開發文件](docs/README.md)
 - [🚀 部署指南](docs/DEPLOYMENT.md)
 - [🔌 API 文件](docs/API.md)
+- [🔒 安全指南](docs/SECURITY.md) - **重要：請先閱讀安全設定**
 
 ## 🛠️ 技術架構
 

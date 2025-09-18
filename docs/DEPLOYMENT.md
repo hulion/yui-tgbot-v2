@@ -78,7 +78,23 @@ binding = "CACHE"
 id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-### 3. 更新 wrangler.toml
+### 3. 設定環境變數
+
+**重要：請使用 Wrangler 的 secret 功能管理敏感資訊，不要直接寫在設定檔中**
+
+```bash
+# 設定 Bot Token（生產環境）
+wrangler secret put BOT_TOKEN
+
+# 設定 Webhook Secret（生產環境）
+wrangler secret put WEBHOOK_SECRET
+
+# 針對特定環境設定（可選）
+wrangler secret put BOT_TOKEN --env development
+wrangler secret put WEBHOOK_SECRET --env development
+```
+
+### 4. 更新 wrangler.toml
 
 編輯 `wrangler.toml` 檔案，填入剛才建立的資源 ID：
 
@@ -87,15 +103,18 @@ name = "yui-tgbot-v2"
 main = "src/bot/index.ts"
 compatibility_date = "2024-08-28"
 
-[env.production.vars]
-ENVIRONMENT = "production"
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
-WEBHOOK_SECRET = "YOUR_WEBHOOK_SECRET_HERE"
+# 注意：請勿在 wrangler.toml 中直接寫入敏感資訊
+# 請使用 wrangler secret put 指令設定環境變數
 
-[env.development.vars]
-ENVIRONMENT = "development"
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
-WEBHOOK_SECRET = "dev-webhook-secret"
+# 設定環境變數的正確方式：
+# wrangler secret put BOT_TOKEN
+# wrangler secret put WEBHOOK_SECRET
+
+[env.production]
+# 生產環境不應在此設定敏感資訊
+
+[env.development]
+# 開發環境變數可使用 .dev.vars 檔案
 
 # 替換為你的 KV 命名空間 ID
 [[kv_namespaces]]
@@ -300,8 +319,8 @@ wrangler d1 execute yui-tgbot-db --command "UPDATE users SET user_type = 'supera
 
 **問題**: `/setWebhook` 回傳錯誤
 
-**解決方案**: 
-- 確認 BOT_TOKEN 正確
+**解決方案**:
+- 確認 BOT_TOKEN 已使用 `wrangler secret put BOT_TOKEN` 正確設定
 - 確認 Worker 已成功部署且可訪問
 - 檢查 Webhook URL 是否正確
 
